@@ -18,18 +18,18 @@ export const useGetProducts = () => {
 };
 
 export const useDeleteProduct = () => {
-  const { mutate, isSuccess } = useMutation({
+  const deletePost = useMutation({
     mutationFn: async (id: number) => {
       return await fetch(`https://fakestoreapi.com/products/${id}`, {
         method: "DELETE",
       }).then((res) => res.json());
     },
   });
-  return [mutate, isSuccess];
+  return [deletePost];
 };
 
 export const useCreateProduct = () => {
-  const deletePost = useMutation({
+  const createProduct = useMutation({
     mutationFn: async (value: FieldValues) => {
       return await fetch("https://fakestoreapi.com/products", {
         method: "POST",
@@ -41,7 +41,7 @@ export const useCreateProduct = () => {
     },
   });
 
-  return [deletePost];
+  return [createProduct];
 };
 
 export const useUpdateProduct = (id: string | undefined) => {

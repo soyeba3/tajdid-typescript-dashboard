@@ -1,15 +1,12 @@
+import { useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { MdOutlineStarPurple500 } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { ProductCardProps } from "../../types/productTypes";
 import Modal from "../modal/Modal";
 
-
-
-function ProductCard({ item, onDelete, isOpen, handleOpen }: ProductCardProps) {
-  if (!item) {
-    return null;
-  }
+function ProductCard({ item, onDelete }: ProductCardProps) {
+  const [isOpen, setIsOpen] = useState(false);
 
   const title = item.title.substring(0, 36);
   const rate = Math.floor(item.rating.rate);
@@ -51,7 +48,7 @@ function ProductCard({ item, onDelete, isOpen, handleOpen }: ProductCardProps) {
             </div>
           </div>
           <div
-            onClick={() => handleOpen && handleOpen()}
+            onClick={() => setIsOpen(true)}
             className="p-2 border border-gray-300 rounded-md cursor-pointer"
           >
             <AiOutlineDelete className="w-6 h-6 text-negative-600" />
@@ -66,7 +63,7 @@ function ProductCard({ item, onDelete, isOpen, handleOpen }: ProductCardProps) {
       <Modal
         id={item.id}
         isOpen={isOpen}
-        handleOpen={handleOpen}
+        handleOpen={setIsOpen}
         onDelete={onDelete}
       />
     </div>

@@ -16,16 +16,16 @@ function CreateProduct() {
   } = useForm();
 
   //Create a product
-  const [deletePost] = useCreateProduct();
+  const [createProduct] = useCreateProduct();
 
   useEffect(() => {
-    if (deletePost.isSuccess) {
+    if (createProduct.isSuccess) {
       navigate("/");
     }
-  }, [deletePost, navigate]);
+  }, [createProduct, navigate]);
 
   const onSubmit: SubmitHandler<FieldValues> = (data) =>
-    deletePost.mutate(data);
+    createProduct.mutate(data);
 
   return (
     <div className="flex flex-col gap-4 px-10 py-6">

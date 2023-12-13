@@ -1,16 +1,3 @@
-export type ProductsType = [
-  {
-    title: string;
-    id: number;
-    rating: {
-      rate: number;
-    };
-    image: string;
-    price: number;
-    description?: string;
-  }
-];
-
 export type ProductType = {
   title: string;
   id: number;
@@ -23,16 +10,6 @@ export type ProductType = {
 };
 
 export type ProductCardProps = {
-  item?: {
-    title: string;
-    id: number;
-    rating: {
-      rate: number;
-    };
-    image: string;
-    price: number;
-  };
+  item: ProductType;
   onDelete: (id: number) => void;
-  isOpen: boolean;
-  handleOpen?: () => void;
 };
